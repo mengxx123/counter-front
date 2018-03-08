@@ -26,9 +26,9 @@
             },
             minus: function () {
                 this.count--
-                if (this.count < 0) {
-                    this.count = 0
-                }
+                // if (this.count < 0) {
+                //     this.count = 0
+                // }
             },
             reset: function () {
                 this.count = 0
