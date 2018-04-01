@@ -1,5 +1,5 @@
 <template>
-    <my-page title="记分">
+    <my-page title="篮球记分">
         <div class="all">
             <section class="input-box">
                 <div class="digital">
@@ -7,8 +7,9 @@
                     <div class="digital-content">{{ count }}</div>
                 </div>
                 <div class="btns">
-                    <ui-raised-button class="btn" label=" + " primary @click="add"/>
-                    <ui-raised-button class="btn" label=" - " @click="minus"/>
+                    <ui-raised-button class="btn" label=" +3 " @click="add(3)"/>
+                    <ui-raised-button class="btn" label=" +2 " @click="add(2)"/>
+                    <ui-raised-button class="btn" label=" +1 " @click="add(1)"/>
                 </div>
             </section>
             <div class="ratio">:</div>
@@ -18,12 +19,15 @@
                     <div class="digital-content">{{ count2 }}</div>
                 </div>
                 <div class="btns">
-                    <ui-raised-button class="btn" label=" + " primary @click="add2"/>
-                    <ui-raised-button class="btn" label=" - " @click="minus2"/>
+                    <ui-raised-button class="btn" label=" +3 " @click="add2(3)"/>
+                    <ui-raised-button class="btn" label=" +2 " @click="add2(2)"/>
+                    <ui-raised-button class="btn" label=" +1 " @click="add2(1)"/>
                 </div>
             </section>
             <div class="common-btns">
-                <ui-raised-button label="重置" @click="reset"/>
+                <ui-raised-button class="btn" label="重置" @click="reset"/>
+                <ui-raised-button class="btn" label="交换" @click="exchange"/>
+                <ui-raised-button class="btn" label="撤销" @click="undo" :disabled="!op"/>
             </div>
         </div>
 
@@ -35,30 +39,54 @@
         data () {
             return {
                 count: 0,
-                count2: 0
+                count2: 0,
+                op: null
             }
         },
         methods: {
-            add: function () {
-                this.count++
+            add(num) {
+                this.count += num
+                this.op = {
+                    type: 'left',
+                    number: num
+                }
             },
-            minus: function () {
+            minus() {
                 this.count--
                 if (this.count < 0) {
                     this.count = 0
                 }
             },
-            add2: function () {
-                this.count2++
+            add2(num) {
+                this.count2 += num
+                this.op = {
+                    type: 'right',
+                    number: num
+                }
             },
-            minus2: function () {
+            minus2() {
                 this.count2--
                 if (this.count2 < 0) {
                     this.count2 = 0
                 }
             },
-            reset: function () {
+            exchange() {
+                let tmp = this.count
+                this.count = this.count2
+                this.count2 = tmp
+            },
+            reset() {
                 this.count = this.count2 = 0
+            },
+            undo() {
+                if (this.op) {
+                    if (this.op.type === 'left') {
+                        this.count -= this.op.number
+                    } else {
+                        this.count2 -= this.op.number
+                    }
+                    this.op = null
+                }
             }
         }
     }
@@ -107,9 +135,11 @@
             color: #eee;
         }
     }
-    .btn {
-        display: block;
-        margin-bottom: 16px;
+    .btns {
+        .btn {
+            display: block;
+            margin-bottom: 16px;
+        }
     }
     .time {
         font-weight: 100;
@@ -147,5 +177,8 @@
         left: 16px;
         bottom: 16px;
         text-align: center;
+        .btn {
+            margin-right: 8px;
+        }
     }
 </style>
