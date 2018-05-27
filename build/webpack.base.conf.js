@@ -25,7 +25,8 @@ module.exports = {
         app: './src/main.js'
     },
     externals:{
-        'vue': 'Vue'
+        'vue': 'Vue',
+        'vue-router': 'VueRouter'
     },
     output: {
         path: config.build.assetsRoot,
