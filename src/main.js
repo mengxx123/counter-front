@@ -3,6 +3,7 @@ import App from './App'
 import router from './router'
 import storage from '@/util/storage'
 import ui from './components/index'
+import './scss/main.scss'
 
 Vue.config.productionTip = false
 
