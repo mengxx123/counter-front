@@ -4,6 +4,7 @@ import Router from 'vue-router'
 const Home = resolve => require(['@/views/Home'], resolve)
 const Simple = resolve => require(['@/views/Simple'], resolve)
 const Multiple = resolve => require(['@/views/Multiple'], resolve)
+const Auto = resolve => require(['@/views/Auto'], resolve)
 const Log = resolve => require(['@/views/Log'], resolve)
 const V2 = resolve => require(['@/views/V2'], resolve)
 const V3 = resolve => require(['@/views/V3'], resolve)
@@ -24,6 +25,10 @@ let routes = [
     {
         path: '/multiple',
         component: Multiple
+    },
+    {
+        path: '/auto',
+        component: Auto
     },
     {
         path: '/logs',

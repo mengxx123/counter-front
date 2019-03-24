@@ -23,6 +23,12 @@
                                 desc: '',
                                 icon: '/static/img/counter.svg',
                                 to: '/multiple'
+                            },
+                            {
+                                name: '自动计数器',
+                                desc: '',
+                                icon: '/static/img/counter.svg',
+                                to: '/auto'
                             }
                         ]
                     },
