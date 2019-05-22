@@ -1,14 +1,7 @@
 <template>
-    <my-page title="记录" :page="page" backable>
+    <my-page title="编辑" :page="page" backable>
         <div class="common-container container">
-            <div v-if="!logs.length">暂无记录</div>
-            <ul class="record-list">
-                <li class="item" v-for="log, index in logs">
-                    <!-- {{ logindex + 1 }}: {{ log.count }} -->
-                    <div>{{ log.createTime | time }}</div>
-                    <div>{{ log.count }}</div>
-                </li>
-            </ul>
+            功能开发中
         </div>
     </my-page>
 </template>
@@ -22,12 +15,12 @@
                 logs: [],
                 page: {
                     menu: [
-                        {
-                            type: 'icon',
-                            icon: 'clear_all',
-                            click: this.clear,
-                            title: '清空'
-                        }
+                        // {
+                        //     type: 'icon',
+                        //     icon: 'clear_all',
+                        //     click: this.clear,
+                        //     title: '清空'
+                        // }
                     ]
                 }
             }

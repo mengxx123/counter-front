@@ -1,36 +1,37 @@
 <template>
     <my-page title="篮球记分">
-        <div class="all">
-            <section class="input-box">
-                <div class="digital">
-                    <div class="digital-bg">88</div>
-                    <div class="digital-content">{{ count }}</div>
+        <div class="common-container container">
+            <div class="all">
+                <section class="input-box">
+                    <div class="digital">
+                        <div class="digital-bg">88</div>
+                        <div class="digital-content">{{ count }}</div>
+                    </div>
+                    <div class="btns">
+                        <ui-raised-button class="btn" label=" +3 " @click="add(3)"/>
+                        <ui-raised-button class="btn" label=" +2 " @click="add(2)"/>
+                        <ui-raised-button class="btn" label=" +1 " @click="add(1)"/>
+                    </div>
+                </section>
+                <div class="ratio">:</div>
+                <section class="input-box">
+                    <div class="digital">
+                        <div class="digital-bg">88</div>
+                        <div class="digital-content">{{ count2 }}</div>
+                    </div>
+                    <div class="btns">
+                        <ui-raised-button class="btn" label=" +3 " @click="add2(3)"/>
+                        <ui-raised-button class="btn" label=" +2 " @click="add2(2)"/>
+                        <ui-raised-button class="btn" label=" +1 " @click="add2(1)"/>
+                    </div>
+                </section>
+                <div class="common-btns">
+                    <ui-raised-button class="btn" label="重置" @click="reset"/>
+                    <ui-raised-button class="btn" label="交换" @click="exchange"/>
+                    <ui-raised-button class="btn" label="撤销" @click="undo" :disabled="!op"/>
                 </div>
-                <div class="btns">
-                    <ui-raised-button class="btn" label=" +3 " @click="add(3)"/>
-                    <ui-raised-button class="btn" label=" +2 " @click="add(2)"/>
-                    <ui-raised-button class="btn" label=" +1 " @click="add(1)"/>
-                </div>
-            </section>
-            <div class="ratio">:</div>
-            <section class="input-box">
-                <div class="digital">
-                    <div class="digital-bg">88</div>
-                    <div class="digital-content">{{ count2 }}</div>
-                </div>
-                <div class="btns">
-                    <ui-raised-button class="btn" label=" +3 " @click="add2(3)"/>
-                    <ui-raised-button class="btn" label=" +2 " @click="add2(2)"/>
-                    <ui-raised-button class="btn" label=" +1 " @click="add2(1)"/>
-                </div>
-            </section>
-            <div class="common-btns">
-                <ui-raised-button class="btn" label="重置" @click="reset"/>
-                <ui-raised-button class="btn" label="交换" @click="exchange"/>
-                <ui-raised-button class="btn" label="撤销" @click="undo" :disabled="!op"/>
             </div>
         </div>
-
     </my-page>
 </template>
 

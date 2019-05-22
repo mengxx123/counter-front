@@ -1,6 +1,8 @@
 <template>
     <my-page title="计数器" :page="page">
-        <app-list :data="groups" />
+        <div class="common-container container">
+            <app-list :data="groups" />
+        </div>
     </my-page>
 </template>
 
@@ -54,8 +56,15 @@
                     menu: [
                         {
                             type: 'icon',
+                            icon: 'search',
+                            href: 'https://search.yunser.com/?utm_source=counter',
+                            target: '_blank',
+                            title: '搜索'
+                        },
+                        {
+                            type: 'icon',
                             icon: 'apps',
-                            href: 'https://app.yunser.com/',
+                            href: 'https://app.yunser.com/?utm_source=counter',
                             target: '_blank',
                             title: '应用'
                         }

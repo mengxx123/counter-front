@@ -1,15 +1,17 @@
 <template>
     <my-page title="计数器" :page="page">
-        <section class="input-box">
-            <div class="count">{{ count }}</div>
-            <div class="btns">
-                <ui-raised-button label=" + " primary @click="add"/>
+        <div class="common-container container">
+            <section class="input-box">
+                <div class="count">{{ count }}</div>
+                <div class="btns">
+                    <ui-raised-button label=" + " primary @click="add"/>
+                </div>
+            </section>
+            <div class="op-btn">
+                <ui-raised-button class="btn" label=" - " @click="minus"/>
+                <ui-raised-button class="btn" label="重置" @click="reset"/>
+                <ui-raised-button class="btn" label="记录" @click="log"/>
             </div>
-        </section>
-        <div class="op-btn">
-            <ui-raised-button class="btn" label=" - " @click="minus"/>
-            <ui-raised-button class="btn" label="重置" @click="reset"/>
-            <ui-raised-button class="btn" label="记录" @click="log"/>
         </div>
         <ui-drawer right :open="open" :docked="false" @close="toggle()">
             <ui-appbar title="设置">
@@ -71,7 +73,8 @@
                 let logs = this.$storage.get('logs', [])
                 logs.unshift({
                     id: '' + new Date().getTime(),
-                    count: this.count
+                    count: this.count,
+                    createTime: new Date().getTime()
                 })
                 this.$storage.set('logs', logs)
             },

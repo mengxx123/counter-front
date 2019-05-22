@@ -1,32 +1,33 @@
 <template>
     <my-page title="记分">
-        <div class="all">
-            <section class="input-box">
-                <div class="digital">
-                    <div class="digital-bg">88</div>
-                    <div class="digital-content">{{ count }}</div>
+        <div class="common-container container">
+            <div class="all">
+                <section class="input-box">
+                    <div class="digital">
+                        <div class="digital-bg">88</div>
+                        <div class="digital-content">{{ count }}</div>
+                    </div>
+                    <div class="btns">
+                        <ui-raised-button class="btn" label=" + " primary @click="add"/>
+                        <ui-raised-button class="btn" label=" - " @click="minus"/>
+                    </div>
+                </section>
+                <div class="ratio">:</div>
+                <section class="input-box">
+                    <div class="digital">
+                        <div class="digital-bg">88</div>
+                        <div class="digital-content">{{ count2 }}</div>
+                    </div>
+                    <div class="btns">
+                        <ui-raised-button class="btn" label=" + " primary @click="add2"/>
+                        <ui-raised-button class="btn" label=" - " @click="minus2"/>
+                    </div>
+                </section>
+                <div class="common-btns">
+                    <ui-raised-button label="重置" @click="reset"/>
                 </div>
-                <div class="btns">
-                    <ui-raised-button class="btn" label=" + " primary @click="add"/>
-                    <ui-raised-button class="btn" label=" - " @click="minus"/>
-                </div>
-            </section>
-            <div class="ratio">:</div>
-            <section class="input-box">
-                <div class="digital">
-                    <div class="digital-bg">88</div>
-                    <div class="digital-content">{{ count2 }}</div>
-                </div>
-                <div class="btns">
-                    <ui-raised-button class="btn" label=" + " primary @click="add2"/>
-                    <ui-raised-button class="btn" label=" - " @click="minus2"/>
-                </div>
-            </section>
-            <div class="common-btns">
-                <ui-raised-button label="重置" @click="reset"/>
             </div>
         </div>
-
     </my-page>
 </template>
 

@@ -1,20 +1,26 @@
 <template>
     <my-page title="批量计数器" :page="page">
-        <ul class="counter-list">
-            <li class="item" v-for="counter, index in counters" :key="counter.id">
-                <div class="count">{{ counter.count }}</div>
-                <ui-icon-button class="icon" slot="right" icon="add" @click="add(index)"/>
-                <ui-icon-button class="icon" slot="right" icon="remove" @click="minus(index)"/>
-                <ui-icon-menu
-                    icon="more_vert"
-                    :anchorOrigin="leftTop"
-                    :targetOrigin="leftTop"
-                    >
-                    <ui-menu-item title="重置" @click="reset(index)" />
-                    <ui-menu-item title="删除" @click="remove(index)" />
-                </ui-icon-menu>
-            </li>
-        </ul>
+        <div class="common-container container">
+            <ul class="counter-list">
+                <li class="item" v-for="counter, index in counters" :key="counter.id">
+                    <div class="name">{{ counter.name }}</div>
+                    <div class="content">
+                        <div class="count">{{ counter.count }}</div>
+                        <ui-icon-button class="icon" slot="right" icon="add" @click="add(index)"/>
+                        <ui-icon-button class="icon" slot="right" icon="remove" @click="minus(index)"/>
+                        <ui-icon-menu
+                            icon="more_vert"
+                            :anchorOrigin="leftTop"
+                            :targetOrigin="leftTop"
+                            >
+                            <ui-menu-item title="编辑" @click="edit(counter, index)" />
+                            <ui-menu-item title="重置" @click="reset(index)" />
+                            <ui-menu-item title="删除" @click="remove(index)" />
+                        </ui-icon-menu>
+                    </div>
+                </li>
+            </ul>
+        </div>
         <ui-drawer right :open="open" :docked="false" @close="toggle()">
             <ui-appbar title="设置">
                 <ui-icon-button icon="close" slot="left" @click="toggle" />
@@ -80,14 +86,19 @@
                 this.save()
             },
             addCounter() {
+                let name = window.prompt('请输入计数内容')
                 this.counters.push({
                     id: new Date().getTime(),
+                    name,
                     count: 0
                 })
                 this.save()
             },
             save() {
                 this.$storage.set('counters', this.counters)
+            },
+            edit(counter, index) {
+                this.$router.push('/counters/' + counter.id)
             },
             reset(index) {
                 this.counters[index].count = 0
@@ -98,6 +109,10 @@
                     counter.count = 0
                 }
                 this.save()
+                this.$message({
+                    type: 'success',
+                    text: '已全部重置'
+                })
             },
             toggle() {
                 this.open = !this.open
@@ -114,9 +129,12 @@
         max-width: 320px;
         padding-right: 16px;
         .item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, .12)
+        }
+        .content {
             display: flex;
             align-items: center;
-            border-bottom: 1px solid rgba(0, 0, 0, .12)
         }
         .count {
             width: 80px;

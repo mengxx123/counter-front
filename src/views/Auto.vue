@@ -1,15 +1,18 @@
 <template>
     <my-page title="自动计数器" :page="page">
-        <section class="input-box">
-            <div class="count">{{ count }}</div>
-            <div class="btns">
-                <ui-text-field v-model.number="unit" label="时间间隔（秒）" />
-                <br>
-                <ui-raised-button label="开始" primary @click="start"/>
+        <div class="common-container container">
+            <section class="input-box">
+                <div class="count">{{ count }}</div>
+                <div class="btns">
+                    <ui-text-field v-model.number="unit" label="时间间隔（秒）" v-if="!isStart" />
+                    <br>
+                    <ui-raised-button class="btn" label="开始" primary @click="start" v-if="!isStart" />
+                    <ui-raised-button class="btn" label="重置" @click="reset" v-if="isStart" />
+                </div>
+            </section>
+            <div class="op-btn">
+                <!-- <ui-raised-button class="btn" label="重置" @click="reset"/> -->
             </div>
-        </section>
-        <div class="op-btn">
-            <!-- <ui-raised-button class="btn" label="重置" @click="reset"/> -->
         </div>
         <ui-drawer right :open="open" :docked="false" @close="toggle()">
             <ui-appbar title="设置">
@@ -27,6 +30,7 @@
     export default {
         data () {
             return {
+                isStart: false,
                 count: 0,
                 step: 1,
                 unit: 4,
@@ -59,6 +63,7 @@
         },
         methods: {
             start() {
+                this.isStart = true
                 this.startTime = new Date().getTime()
                 this.timer = setInterval(() => {
                     this.count = parseInt((new Date().getTime() - this.startTime) / (this.unit * 1000))
@@ -84,6 +89,8 @@
             },
             reset() {
                 this.count = 0
+                this.isStart = false
+                this.timer && clearInterval(this.timer)
                 this.$storage.set('count', this.count)
             },
             log() {
