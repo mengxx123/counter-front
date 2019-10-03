@@ -38,18 +38,13 @@
                 audioSrc: 'http://appcdn.fanyi.baidu.com/zhdict/mp3/ge3.mp3',
                 page: {
                     menu: [
-                        // {
-                        //     type: 'icon',
-                        //     icon: 'settings',
-                        //     click: this.setting,
-                        //     title: '设置'
-                        // },
-                        // {
-                        //     type: 'icon',
-                        //     icon: 'schedule',
-                        //     to: '/logs',
-                        //     title: '记录'
-                        // }
+                        {
+                            type: 'icon',
+                            icon: 'help',
+                            href: 'https://project.yunser.com/products/605404d09fa511e99df48144af4c96c0',
+                            target: '_blank',
+                            title: '帮助'
+                        }
                     ]
                 }
             }

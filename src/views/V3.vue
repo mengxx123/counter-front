@@ -1,5 +1,5 @@
 <template>
-    <my-page title="篮球记分">
+    <my-page title="篮球记分" :page="page">
         <div class="common-container container">
             <div class="all">
                 <section class="input-box">
@@ -41,7 +41,18 @@
             return {
                 count: 0,
                 count2: 0,
-                op: null
+                op: null,
+                page: {
+                    menu: [
+                        {
+                            type: 'icon',
+                            icon: 'help',
+                            href: 'https://project.yunser.com/products/0aada3509fa611e99df48144af4c96c0',
+                            target: '_blank',
+                            title: '帮助'
+                        }
+                    ]
+                }
             }
         },
         methods: {
@@ -175,7 +186,7 @@
     }
     .common-btns {
         position: absolute;
-        left: 16px;
+        right: 16px;
         bottom: 16px;
         text-align: center;
         .btn {

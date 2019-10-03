@@ -1,5 +1,5 @@
 <template>
-    <my-page title="记分">
+    <my-page title="记分" :page="page">
         <div class="common-container container">
             <div class="all">
                 <section class="input-box">
@@ -35,8 +35,22 @@
     export default {
         data () {
             return {
+                teams: [
+                    
+                ],
                 count: 0,
-                count2: 0
+                count2: 0,
+                page: {
+                    menu: [
+                        {
+                            type: 'icon',
+                            icon: 'help',
+                            href: 'https://project.yunser.com/products/c209e7809fa511e99df48144af4c96c0',
+                            target: '_blank',
+                            title: '帮助'
+                        }
+                    ]
+                }
             }
         },
         methods: {
@@ -145,7 +159,7 @@
     }
     .common-btns {
         position: absolute;
-        left: 16px;
+        right: 16px;
         bottom: 16px;
         text-align: center;
     }

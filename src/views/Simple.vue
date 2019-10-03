@@ -107,7 +107,7 @@
     }
     .op-btn {
         position: absolute;
-        left: 16px;
+        right: 16px;
         bottom: 16px;
         .btn {
             margin-right: 8px;
