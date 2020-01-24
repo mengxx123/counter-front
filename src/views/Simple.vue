@@ -18,7 +18,9 @@
                 <ui-icon-button icon="close" slot="left" @click="toggle" />
             </ui-appbar>
             <div class="body">
-                <ui-text-field v-model.number="step" label="每次增加" />
+                <ui-text-field v-model.number="count" type="number" label="数值" />
+                <br>
+                <ui-text-field v-model.number="step" type="number" label="每次增加" />
             </div>
         </ui-drawer>
     </my-page>
@@ -44,6 +46,13 @@
                             icon: 'schedule',
                             to: '/logs',
                             title: '记录'
+                        },
+                        {
+                            type: 'icon',
+                            icon: 'help',
+                            href: 'https://project.yunser.com/products/9abc3010241c11ea8c637dc37e0f2d5d',
+                            target: '_blank',
+                            title: '帮助'
                         }
                     ]
                 }
